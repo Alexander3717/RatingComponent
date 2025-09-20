@@ -1,0 +1,88 @@
+@use 'functions' as *;
+
+// colors
+$colors-black: #000000;
+$colors-white: #ffffff;
+$colors-grey-500: #969fad;
+$colors-grey-900: #262e38;
+$colors-grey-950: #131518;
+$colors-orange-500: #fc7614;
+
+//spacings
+$spacing-0: 0px;
+$spacing-100: 8px;
+$spacing-200: 16px;
+$spacing-300: 24px;
+$spacing-400: 32px;
+$spacing-500: 40px;
+$spacing-1300: 104px;
+$spacing-1700: 136px;
+
+// text presets
+@mixin text-base {
+  color: inherit;
+  font-family: Overpass;
+  font-style: normal;
+  font-feature-settings: 'liga' off, 'clig' off;
+}
+
+// desktop
+@mixin text-preset-1 {
+  @include text-base;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 35px; /* 125% */
+}
+
+@mixin text-preset-2 {
+  @include text-base;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 30px; /* 125% */
+}
+
+@mixin text-preset-3 {
+  @include text-base;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 24px; /* 150% */
+  letter-spacing: 0.2px;
+}
+
+@mixin text-preset-4 {
+  @include text-base;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24px; /* 160% */
+}
+
+@mixin text-preset-4-bold {
+  @include text-base;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 19px; /* 126.667% */
+  letter-spacing: 2px;
+}
+
+@mixin text-preset-5 {
+  @include text-base;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 22px; /* 157.143% */
+}
+
+@mixin text-preset-5-bold {
+  @include text-base;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px; /* 128.571% */
+  letter-spacing: 1.87px;
+}
+
+@mixin text-preset-5-semi-bold {
+  @include text-base;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 24px; /* 171.429% */
+  letter-spacing: 0.17px;
+}

@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Frontend Mentor | Interactive rating component</title>
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./images/favicon-32x32.png"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+
+  <body>
+    <main>
+      <div class="rating-component">
+        <div class="rating-prompt">
+          <div class="rating-prompt__icon">
+            <img src="images/icon-star.svg" alt="Star icon" />
+          </div>
+          <div class="rating-prompt__content">
+            <h1 class="rating-prompt__title">How did we do?</h1>
+            <p class="rating-prompt__description">
+              Please let us know how we did with your support request. All
+              feedback is appreciated to help us improve our offering!
+            </p>
+            <form class="rating-prompt__form" id="ratingForm">
+              <label class="rating-option">
+                <input
+                  type="radio"
+                  class="sr-only"
+                  id="rating1"
+                  name="rating"
+                  value="1"
+                />
+                <span>1</span>
+              </label>
+              <label class="rating-option">
+                <input
+                  type="radio"
+                  class="sr-only"
+                  id="rating2"
+                  name="rating"
+                  value="2"
+                />
+                <span>2</span>
+              </label>
+              <label class="rating-option">
+                <input
+                  type="radio"
+                  class="sr-only"
+                  id="rating3"
+                  name="rating"
+                  value="3"
+                />
+                <span>3</span>
+              </label>
+              <label class="rating-option">
+                <input
+                  type="radio"
+                  class="sr-only"
+                  id="rating4"
+                  name="rating"
+                  value="4"
+                />
+                <span>4</span>
+              </label>
+              <label class="rating-option">
+                <input
+                  type="radio"
+                  class="sr-only"
+                  id="rating5"
+                  name="rating"
+                  value="5"
+                />
+                <span>5</span>
+              </label>
+            </form>
+          </div>
+          <button
+            class="rating-prompt__submit"
+            type="submit"
+            form="ratingForm"
+            disabled
+          >
+            <span>Submit</span>
+          </button>
+        </div>
+        <!-- Thank you component -->
+        <div class="rating-thanks hidden">
+          <div class="rating-thanks__icon">
+            <img
+              src="images/illustration-thank-you.svg"
+              alt="Thank you vector art"
+            />
+          </div>
+          <p class="rating-thanks__rating"></p>
+          <div class="rating-thanks__content">
+            <h1 class="rating-thanks__title">Thank you!</h1>
+            <p class="rating-thanks__description">
+              We appreciate you taking the time to give a rating. If you ever
+              need more support, don’t hesitate to get in touch!
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

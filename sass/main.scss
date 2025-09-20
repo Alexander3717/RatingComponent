@@ -1,0 +1,278 @@
+@use "setup" as *;
+
+// Constants
+$breakpoint-mobile: 480px;
+$rating-component-width: 90%;
+$rating-component-max-width-mobile: 327px;
+$rating-component-max-width-desktop: 412px;
+$rating-component-min-height-mobile: 360px;
+$rating-component-min-height-desktop: 416px;
+$rating-component-padding-mobile: $spacing-300;
+$rating-component-padding-desktop: 30.5px;
+
+// Mixins for responsive design
+@mixin mobile-up {
+    @media (min-width: $breakpoint-mobile) {
+        @content;
+    }
+}
+
+@mixin circle-element($size-mobile, $size-desktop: $size-mobile) {
+    width: $size-mobile;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    @include flex(row, center, center);
+
+    @include mobile-up {
+        width: $size-desktop;
+    }
+}
+
+@mixin hover-only {
+    @media (hover: hover) {
+        @content;
+    }
+}
+
+// Base styles
+body {
+    background-color: $colors-grey-950;
+    color: white;
+    @include flex(column, center);
+    padding: $spacing-300 0;
+}
+
+main {
+    @include flex(row, center, center);
+}
+
+button,
+label {
+    cursor: pointer;
+}
+
+// Utility classes
+.hidden {
+    display: none !important;
+}
+
+.sr-only {
+    position: absolute;
+    width: rem(1px);
+    height: rem(1px);
+    padding: 0;
+    margin: rem(-1px);
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+// Components
+.rating-component {
+    @include flex(column, center, $gap: $spacing-300);
+    background: radial-gradient(100% 100% at 50% 0%, #232a34 0%, #181e27 100%);
+    border-radius: 15px;
+    padding: 0 $rating-component-padding-mobile;
+    width: $rating-component-width;
+    max-width: $rating-component-max-width-mobile;
+    min-height: $rating-component-min-height-mobile;
+
+    @include mobile-up {
+        max-width: $rating-component-max-width-desktop;
+        min-height: $rating-component-min-height-desktop;
+        padding: 0 $rating-component-padding-desktop;
+    }
+}
+
+.rating-prompt {
+    @include flex(column, $gap: $spacing-300);
+
+    @include mobile-up {
+        gap: $spacing-400;
+    }
+}
+
+.rating-prompt__icon {
+    @include circle-element(40px, 48px);
+    background-color: $colors-grey-900;
+
+    img {
+        width: 14px;
+        height: 13.35px;
+
+        @include mobile-up {
+            width: 16.8px;
+            height: 16px;
+        }
+    }
+}
+
+.rating-prompt__content {
+    @include flex(column, $gap: $spacing-200);
+}
+
+.rating-prompt__title {
+    @include text-preset-2;
+
+    @include mobile-up {
+        @include text-preset-1;
+    }
+}
+
+.rating-prompt__description {
+    @include text-preset-5;
+    color: $colors-grey-500;
+
+    @include mobile-up {
+        @include text-preset-4;
+        color: $colors-grey-500;
+    }
+}
+
+.rating-prompt__form {
+    @include flex(row, center, $gap: $spacing-200);
+
+    @include mobile-up {
+        gap: $spacing-300;
+    }
+
+    border-radius: 22.5px;
+
+    &:has(:focus-visible) {
+        outline: 2px solid $colors-grey-900;
+        outline-offset: 5px;
+    }
+}
+
+.rating-option {
+    @include circle-element(42px, 51px);
+    background-color: $colors-grey-900;
+    @include text-preset-5-bold;
+    color: $colors-grey-500;
+    transition: all 0.2s ease;
+
+    @include mobile-up {
+        @include text-preset-3;
+        color: $colors-grey-500;
+    }
+
+    @include hover-only {
+        &:hover {
+            background-color: white;
+        }
+    }
+
+    &:has(input:checked) {
+        background-color: $colors-orange-500;
+        color: $colors-grey-900;
+    }
+
+    span {
+        height: 18px;
+        margin-left: 2px;
+        margin-top: 2px;
+
+        @include mobile-up {
+            margin-top: 0;
+            margin-bottom: 1px;
+        }
+    }
+}
+
+.rating-prompt__submit {
+    @include text-preset-5-bold;
+    @include flex(row, center, center);
+    color: $colors-grey-950;
+    background-color: $colors-orange-500;
+    border: none;
+    border-radius: 22.5px;
+    height: 45px;
+    text-transform: uppercase;
+    transition: background-color 0.2s ease;
+
+    @include mobile-up {
+        @include text-preset-5-semi-bold;
+        color: $colors-grey-950;
+    }
+
+    @include hover-only {
+        &:hover {
+            background-color: white;
+        }
+    }
+
+    &:focus-visible {
+        outline: 2px solid $colors-orange-500;
+        outline-offset: 3px;
+    }
+
+    span {
+        height: 15px;
+
+        @include mobile-up {
+            height: 20px;
+        }
+    }
+}
+
+.rating-thanks {
+    @include flex(column, flex-start, center, $gap: $spacing-300);
+    text-align: center;
+
+    @include mobile-up {
+        padding: 0 5.5px;
+        gap: $spacing-400;
+    }
+}
+
+.rating-thanks__icon {
+    width: 144px;
+    height: 96px;
+
+    @include mobile-up {
+        width: 162px;
+        height: 108px;
+    }
+}
+
+.rating-thanks__rating {
+    background-color: $colors-grey-900;
+    border-radius: 22.5px;
+    padding: 6px $spacing-200 2px $spacing-200;
+    @include text-preset-5;
+    color: $colors-orange-500;
+
+    @include mobile-up {
+        @include text-preset-4;
+        color: $colors-orange-500;
+    }
+}
+
+.rating-thanks__content {
+    @include flex(column, $gap: $spacing-200);
+}
+
+.rating-thanks__title {
+    @include text-preset-2;
+
+    @include mobile-up {
+        @include text-preset-1;
+    }
+}
+
+.rating-thanks__description {
+    @include text-preset-5;
+    color: $colors-grey-500;
+
+    @include mobile-up {
+        @include text-preset-4;
+        color: $colors-grey-500;
+    }
+}
+
+// Transitions
+.rating-prompt,
+.rating-thanks {
+    transition: opacity 0.25s;
+}
